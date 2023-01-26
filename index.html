@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+    <title>To Do List 2023</title>
+  </head>
+  <body>
+    <main class="main container">
+      <h1 class="title">To Do List 2023</h1>
+      <form class="new-task-form">
+        <input type="text" class="new-task-input" placeholder="Add new task" />
+        <button class="new-task-submit">Add Task</button>
+      </form>
+
+      <section class="list-section">
+        <h2>Tasks</h2>
+        <div class="lists">
+          <div class="list">
+            <input type="text" class="text" value="learn javascript" readonly />
+
+            <div class="actions">
+              <button class="btn edit">Edit</button>
+              <button class="btn delete">Delete</button>
+            </div>
+          </div>
+
+          <div class="list">
+            <input type="text" class="text" value="learn react" readonly />
+
+            <div class="actions">
+              <button class="btn edit">Edit</button>
+              <button class="btn delete">Delete</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
