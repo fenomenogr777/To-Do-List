@@ -77,7 +77,9 @@ body {
 .list {
   border-radius: 11px;
   margin-top: 1rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 1rem;
   justify-content: space-between;
   align-items: center;
   font-size: 5rem;
@@ -117,4 +119,22 @@ body {
 .delete {
   background: #fa5252;
   box-shadow: 0px 8px 28px rgba(250, 82, 82, 0.2);
+}
+
+.footer {
+  text-align: center;
+  font-size: 1.6rem;
+  color: rgba(203, 243, 129, 0.4);
+}
+
+.footer-year {
+  font-size: 1.6rem;
+  color: rgba(203, 243, 129, 0.4);
+}
+
+.footer-link:link,
+.footer-link:visited {
+  font-size: 1.6rem;
+  color: rgba(203, 243, 129, 0.8);
+  text-decoration: none;
 }

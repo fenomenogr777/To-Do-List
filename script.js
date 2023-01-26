@@ -1,9 +1,17 @@
 "use strict";
 
+/////////////// DYNAMIC YEAR TITLE //////////////
+const currentYear=new Date().getFullYear()
+document.title=`To Do List ${currentYear}`
+document.querySelector(".title").textContent=`To Do List ${currentYear}`
+document.querySelector(".footer-year").textContent=`${currentYear}`
+
+
+
+///////////////////// VARIABLES ///////////////////
 const newTaskInputEL = document.querySelector(".new-task-input");
 const newTaskBtn = document.querySelector(".new-task-submit");
 const listContainer = document.querySelector(".lists");
-
 
 ///////////////////// ADD NEW TASK ///////////////////
 const addNewTask = function (e) {
@@ -22,7 +30,6 @@ const addNewTask = function (e) {
 };
 
 newTaskBtn.addEventListener("click", addNewTask);
-
 
 //////////////////// DELETE TASK ///////////////////
 const deleteTask = function (e) {
