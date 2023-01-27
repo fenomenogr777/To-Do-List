@@ -1,5 +1,4 @@
 "use strict";
-
 ///////////////////// VARIABLES ///////////////////
 const newTaskInputEL = document.querySelector(".new-task-input");
 const newTaskBtn = document.querySelector(".new-task-submit");
@@ -8,34 +7,35 @@ const titleEL = document.querySelector(".title");
 const footerYearEL = document.querySelector(".footer-year");
 let titleHead = document.title;
 
-///////////// DYNAMIC YEAR TITLE/FOOTER ///////////
-const currentYear = new Date().getFullYear();
-titleHead = `To Do List ${currentYear}`;
-titleEL.textContent = `To Do List ${currentYear}`;
-footerYearEL.textContent = `${currentYear}`;
-
-///////////////////// ADD NEW TASK ///////////////////
-
+///////////////////// CLASS ///////////////////
 class AppCL {
   tasks = [];
 
   constructor() {
+    ///////////////////// DYNAMIC YEAR TITTLE/FOOTER ///////////////////
+    this.currentYear();
+
+    ///////////////////// LOCALE STORAGE ///////////////////
     this.localStorage();
+
+    ///////////////////// EVENT HANDLERS ///////////////////
     newTaskBtn.addEventListener("click", this.addNewTask.bind(this));
     listContainer.addEventListener("click", this.deleteTask.bind(this));
     listContainer.addEventListener("click", this.editTask.bind(this));
   }
 
+  ///////////////////// ADD NEW TASK ///////////////////
   addNewTask(e) {
     e.preventDefault();
     const newTask = newTaskInputEL.value;
     if (!newTask) return;
 
-    const html = ` <div class="list" id="${this.tasks.length}">
+    const html = ` 
+  <div class="list" id="${this.tasks.length}">
   <input type="text" class="text" value="${newTask}" readonly />
   <div class="actions">
-    <button class="btn edit">Edit</button>
-    <button class="btn delete">Delete</button>
+  <button class="btn edit">Edit</button>
+  <button class="btn delete">Delete</button>
   </div>
   </div>`;
     listContainer.insertAdjacentHTML("afterbegin", html);
@@ -44,6 +44,7 @@ class AppCL {
     localStorage.setItem("tasks", JSON.stringify(this.tasks));
   }
 
+  ///////////////////// DELETE TASK ///////////////////
   deleteTask(e) {
     const clicked = e.target;
     if (!clicked.classList.contains("delete")) return;
@@ -53,8 +54,8 @@ class AppCL {
     localStorage.setItem("tasks", JSON.stringify(this.tasks));
   }
 
+  ///////////////////// EDIT TASK ///////////////////
   editTask(e) {
-    let newText = document.querySelector(".text").value;
     const clicked = e.target;
     if (!clicked.classList.contains("edit")) return;
 
@@ -71,12 +72,13 @@ class AppCL {
       clicked.innerText = "Edit";
       edit.style.color = " #212529";
       clicked.style.background = "#4c6ef5";
-      const id = clicked.closest(".list").getAttribute("id");
-      clicked.closest(".list").firstElementChild.setAttribute("value", newText);
-      
+      this.tasks[id] = edit.value;
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
+      console.log(this.tasks);
     }
   }
 
+  ///////////////////// LOCALE STORAGE GET ///////////////////
   localStorage() {
     const data = JSON.parse(localStorage.getItem("tasks")) || [];
     console.log(data);
@@ -92,6 +94,14 @@ class AppCL {
       </div>`;
       listContainer.insertAdjacentHTML("afterbegin", html);
     });
+  }
+
+  ///////////////////// DYNAMIC YEAR TITTLE/FOOTER ///////////////////
+  currentYear() {
+    const currentYear = new Date().getFullYear();
+    titleHead = `To Do List ${currentYear}`;
+    titleEL.textContent = `To Do List ${currentYear}`;
+    footerYearEL.textContent = `${currentYear}`;
   }
 }
 
