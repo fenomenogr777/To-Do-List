@@ -72,7 +72,9 @@ class AppCL {
       clicked.innerText = "Edit";
       edit.style.color = " #212529";
       clicked.style.background = "#4c6ef5";
-      this.tasks[id] = edit.value;
+      const id=clicked.closest(".list").getAttribute("id")
+      console.log(edit,edit.value,id)
+      this.tasks[+id] = edit.value;
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
       console.log(this.tasks);
     }
