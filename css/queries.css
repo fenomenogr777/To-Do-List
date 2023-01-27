@@ -1,0 +1,47 @@
+/* 800px */
+@media (max-width: 50em) {
+  .title {
+    font-size: 8rem;
+  }
+}
+
+/* 700px */
+@media (max-width: 43em) {
+  .title {
+    font-size: 6rem;
+    text-align: center;
+  }
+  .list {
+    font-size: 3rem;
+  }
+
+  .footer {
+    font-size: 1.2rem;
+  }
+
+  .footer-year {
+    font-size: 1.2rem;
+  }
+  .footer-link:link,
+  .footer-link:visited {
+    font-size: 1.4rem;
+  }
+}
+
+/* 550px */
+@media (max-width: 34em) {
+  * {
+    font-size: 55%;
+  }
+
+  .title {
+    font-size: 5rem;
+  }
+}
+
+/* 430px */
+@media (max-width: 27em) {
+  .container {
+    padding: 1rem;
+  }
+}
